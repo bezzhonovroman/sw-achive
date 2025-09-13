@@ -146,122 +146,91 @@ const achievementsData = {
     }
 };
 
-// Функция для переключения видимости достижений
-function toggleAchievements(memberId) {
-    const member = document.querySelector(`[data-member="${memberId}"]`);
-    const hiddenAchievements = member.querySelectorAll('.achievement-item.hidden');
-    const expandBtn = member.querySelector('.expand-btn');
-    const achievementsGrid = member.querySelector('.achievements-grid');
-    
-    if (hiddenAchievements.length === 0) {
-        return; // Если нет скрытых достижений, ничего не делаем
+// Карта соответствия участника и его достижений
+const memberAchievements = {
+    1: [1, 2, 3, 4, 5],
+    2: [6, 7, 8],
+    3: [9, 10, 11, 12, 13, 14],
+    4: [15, 16, 17, 18, 19],
+    5: [20, 21, 22],
+    6: [23, 24, 25, 26, 27, 28, 29],
+    7: [30, 31, 32, 33],
+    8: [34, 35, 36]
+};
+
+// Вспомогательные данные по участникам (имя, роль, аватар)
+const membersInfo = {
+    1: { name: 'Марина Селезнева', role: 'iOS Developer', avatar: 'source/selezneva.jpg' },
+    2: { name: 'Павел Кривцов', role: 'iOS Developer', avatar: 'source/krivcov.jpg' },
+    3: { name: 'Тимур Медов', role: 'Android Developer', avatar: 'source/medov.jpg' },
+    4: { name: 'Никита Сахно', role: 'Android Developer', avatar: 'source/sahno.jpg' },
+    5: { name: 'Никита Юрлов', role: 'Backend Developer', avatar: 'source/yurlov.jpg' },
+    6: { name: 'Никита Михайлюк', role: 'Backend Developer', avatar: 'source/mikhaylyuk.jpg' },
+    7: { name: 'Екатерина Антипова', role: 'QA Engineer', avatar: 'source/antipova.jpeg' },
+    8: { name: 'Роман Безжонов', role: 'QA Engineer', avatar: 'source/bezzhonov.jpg' }
+};
+
+// Рендер страницы участника (member.html)
+function renderMemberPage() {
+    const params = new URLSearchParams(window.location.search);
+    const memberId = params.get('id');
+    if (!memberId) return;
+
+    const info = membersInfo[memberId];
+    const ids = memberAchievements[memberId] || [];
+
+    const headerEl = document.getElementById('memberHeader');
+    const listEl = document.getElementById('memberAchievements');
+
+    if (headerEl && info) {
+        headerEl.innerHTML = `
+            <div class="member-header">
+                <div class="avatar"><img src="${info.avatar}" alt="${info.name}"></div>
+                <div class="member-info">
+                    <h2>${info.name}</h2>
+                    <p class="role">${info.role}</p>
+                </div>
+            </div>
+        `;
     }
-    
-    const isExpanded = achievementsGrid.classList.contains('expanded');
-    
-    if (isExpanded) {
-        // Скрываем дополнительные достижения
-        achievementsGrid.classList.remove('expanded');
-        hiddenAchievements.forEach(achievement => {
-            achievement.classList.remove('show');
-            setTimeout(() => {
-                achievement.style.display = 'none';
-            }, 300);
+
+    if (listEl) {
+        listEl.innerHTML = '';
+        ids.forEach((aid) => {
+            const a = achievementsData[aid];
+            if (!a) return;
+            const item = document.createElement('div');
+            item.className = 'achievement-card';
+            // Используем плейсхолдеры изображений Unsplash для единообразия
+            item.innerHTML = `
+                <div class="achievement-card__image">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=250&fit=crop" alt="${a.title}">
+                </div>
+                <div class="achievement-card__content">
+                    <h3>${a.title}</h3>
+                    <p>${a.description}</p>
+                </div>
+            `;
+            listEl.appendChild(item);
         });
-        expandBtn.textContent = 'Показать все достижения';
-    } else {
-        // Показываем дополнительные достижения
-        achievementsGrid.classList.add('expanded');
-        hiddenAchievements.forEach(achievement => {
-            achievement.style.display = 'block';
-            setTimeout(() => {
-                achievement.classList.add('show');
-            }, 10);
-        });
-        expandBtn.textContent = 'Скрыть дополнительные';
     }
-}
-
-// Функция для открытия модального окна с достижением
-function openAchievementModal(achievementId) {
-    const achievement = achievementsData[achievementId];
-    if (!achievement) return;
-    
-    const modal = document.getElementById('achievementModal');
-    const modalImage = document.getElementById('modalImage');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDescription = document.getElementById('modalDescription');
-    
-    // Находим исходное изображение для получения его src
-    const originalImg = document.querySelector(`[data-achievement="${achievementId}"] img`);
-    if (originalImg) {
-        modalImage.src = originalImg.src;
-        modalImage.alt = originalImg.alt;
-    }
-    
-    modalTitle.textContent = achievement.title;
-    modalDescription.textContent = achievement.description;
-    
-    modal.style.display = 'block';
-    document.body.style.overflow = 'hidden'; // Блокируем прокрутку фона
-}
-
-// Функция для закрытия модального окна
-function closeModal() {
-    const modal = document.getElementById('achievementModal');
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto'; // Восстанавливаем прокрутку
-}
-
-// Функция для скрытия кнопки раскрытия, если достижений 3 или меньше
-function hideExpandButtonIfNeeded() {
-    document.querySelectorAll('.team-member').forEach(member => {
-        const allAchievements = member.querySelectorAll('.achievement-item');
-        const expandBtn = member.querySelector('.expand-btn');
-        
-        if (allAchievements.length <= 3 && expandBtn) {
-            expandBtn.style.display = 'none';
-        }
-    });
 }
 
 // Инициализация при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
-    // Добавляем обработчики клика на достижения
-    document.querySelectorAll('.achievement-item').forEach(item => {
-        item.addEventListener('click', function() {
-            const achievementId = this.getAttribute('data-achievement');
-            openAchievementModal(achievementId);
-        });
-    });
-    
-    // Скрываем кнопки раскрытия для членов команды с 3 или менее достижениями
-    hideExpandButtonIfNeeded();
-    
-    // Закрытие модального окна при клике вне его
-    window.addEventListener('click', function(event) {
-        const modal = document.getElementById('achievementModal');
-        if (event.target === modal) {
-            closeModal();
-        }
-    });
-    
-    // Закрытие модального окна по клавише Escape
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape') {
-            closeModal();
-        }
-    });
+    // Если это index.html — ничего особого не делаем, ссылки уже в разметке
+    // Если это member.html — отрисовать достижения
+    if (document.getElementById('memberPage')) {
+        renderMemberPage();
+    }
 });
 
-// Анимация появления карточек при загрузке
+// Анимация появления карточек при загрузке (главная страница)
 document.addEventListener('DOMContentLoaded', function() {
     const teamMembers = document.querySelectorAll('.team-member');
-    
     teamMembers.forEach((member, index) => {
         member.style.opacity = '0';
         member.style.transform = 'translateY(30px)';
-        
         setTimeout(() => {
             member.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             member.style.opacity = '1';
