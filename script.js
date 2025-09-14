@@ -226,6 +226,23 @@ const membersInfo = {
     8: { name: 'Роман Безжонов', role: 'QA Engineer', avatar: 'source/bezzhonov.jpg' }
 };
 
+// Функция для получения URL изображения достижения
+function getAchievementImageUrl(achievementId) {
+    // Константа для переключения между заглушкой и реальными изображениями
+    const USE_PLACEHOLDER = true; // Поставьте false, когда загрузите реальные изображения
+    
+    if (USE_PLACEHOLDER) {
+        return 'source/achievements/placeholder.svg';
+    }
+    
+    // Когда загрузите реальные изображения:
+    // 1. Поставьте USE_PLACEHOLDER = false
+    // 2. Название файлов должно быть: achievement_1.png, achievement_2.jpg, и т.д.
+    // 3. Выберите нужное расширение файла ниже:
+    
+    return `source/achievements/achievement_${achievementId}.png`; // Или .jpg, .jpeg, .svg
+}
+
 // Рендер страницы участника (member.html)
 function renderMemberPage() {
     const params = new URLSearchParams(window.location.search);
@@ -258,8 +275,8 @@ function renderMemberPage() {
             const item = document.createElement('div');
             item.className = a.active ? 'achievement-card achievement-card--active' : 'achievement-card achievement-card--inactive';
             item.setAttribute('data-achievement', String(aid));
-            // Используем квадратные плейсхолдеры изображений; параметр sig меняем по id для разнообразия
-            const imgUrl = `https://images.unsplash.com/photo-1551434678-e076c223a692?w=128&h=128&fit=crop&sig=${aid}`;
+            // Используем локальные изображения из папки source/achievements
+            const imgUrl = getAchievementImageUrl(aid);
             item.innerHTML = `
                 <div class="achievement-card__image">
                     <img src="${imgUrl}" alt="${a.title}">

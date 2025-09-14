@@ -1,0 +1,22 @@
+<svg width="128" height="128" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .bg { fill: #14161A; }
+      .border { fill: none; stroke: #272A31; stroke-width: 2; }
+      .icon { fill: #787774; }
+      .text { fill: #B3BBC7; font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; text-anchor: middle; }
+    </style>
+  </defs>
+  
+  <!-- Фон -->
+  <rect width="128" height="128" rx="8" class="bg"/>
+  
+  <!-- Граница -->
+  <rect x="1" y="1" width="126" height="126" rx="7" class="border"/>
+  
+  <!-- Иконка достижения (звезда) -->
+  <path d="M64 20L72 44H96L78 60L86 84L64 70L42 84L50 60L32 44H56Z" class="icon"/>
+  
+  <!-- Текст -->
+  <text x="64" y="110" class="text">Achievement</text>
+</svg>
