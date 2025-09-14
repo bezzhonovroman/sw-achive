@@ -325,16 +325,51 @@ if (document.getElementById('memberPage')) {
     }
 });
 
+// Функция для вычисления процента активных достижений
+function calculateMemberProgress(memberId) {
+    const achievementIds = memberAchievements[memberId] || [];
+    if (achievementIds.length === 0) return 0;
+    
+    const activeCount = achievementIds.filter(id => {
+        const achievement = achievementsData[id];
+        return achievement && achievement.active;
+    }).length;
+    
+    return Math.round((activeCount / achievementIds.length) * 100);
+}
+
+// Функция для обновления прогресс-баров на главной странице
+function updateProgressBars() {
+    for (let memberId = 1; memberId <= 8; memberId++) {
+        const progress = calculateMemberProgress(memberId);
+        const progressFill = document.querySelector(`[data-member-id="${memberId}"].progress-fill`);
+        const progressText = document.querySelector(`[data-member-id="${memberId}"].progress-text`);
+        
+        if (progressFill && progressText) {
+            // Отложим анимацию для плавного эффекта
+            setTimeout(() => {
+                progressFill.style.width = `${progress}%`;
+                progressText.textContent = `${progress}%`;
+            }, memberId * 100); // Последовательная анимация
+        }
+    }
+}
+
 // Анимация появления карточек при загрузке (главная страница)
 document.addEventListener('DOMContentLoaded', function() {
     const teamMembers = document.querySelectorAll('.team-member');
-    teamMembers.forEach((member, index) => {
-        member.style.opacity = '0';
-        member.style.transform = 'translateY(30px)';
-        setTimeout(() => {
-            member.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            member.style.opacity = '1';
-            member.style.transform = 'translateY(0)';
-        }, index * 200);
-    });
+    if (teamMembers.length > 0) {
+        teamMembers.forEach((member, index) => {
+            member.style.opacity = '0';
+            member.style.transform = 'translateY(30px)';
+            setTimeout(() => {
+                member.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                member.style.opacity = '1';
+                member.style.transform = 'translateY(0)';
+            }, index * 200);
+        });
+        
+        // Обновляем прогресс-бары после загрузки карточек
+        setTimeout(updateProgressBars, 800);
+    }
 });
