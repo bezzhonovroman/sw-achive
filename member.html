@@ -28,6 +28,22 @@
         </main>
     </div>
 
+    <!-- Модалка для просмотра достижения на странице участника -->
+    <div id="memberAchievementModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeMemberModal()">&times;</span>
+            <div class="modal-body">
+                <div class="achievement-image">
+                    <img id="memberModalImage" src="" alt="Achievement" />
+                </div>
+                <div class="achievement-info">
+                    <h3 id="memberModalTitle"></h3>
+                    <p id="memberModalDescription"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
