@@ -6,14 +6,14 @@ const achievementsData = {
         description: "Успешно запустил первое мобильное приложение в App Store и Google Play. Приложение получило более 10,000 загрузок в первую неделю.",
         category: "process",
         rarity: "epic",
-        active: false
+        active: true
     },
     2: {
         title: "Архитектурный мастер",
         description: "Спроектировал и реализовал масштабируемую архитектуру приложения, которая выдержала нагрузку в 100,000+ пользователей одновременно.",
         category: "technical",
         rarity: "legendary",
-        active: false
+        active: true
     },
     3: {
         title: "Инноватор UX",
@@ -340,7 +340,6 @@ function createAchievementCard(achievementId, achievement) {
     item.innerHTML = `
         <div class="achievement-card__image">
             <img src="${imgUrl}" alt="${achievement.title}">
-            <div class="rarity-indicator">${rarityText}</div>
         </div>
         <div class="achievement-card__content">
             <h3>${achievement.title}</h3>
@@ -441,8 +440,31 @@ function openMemberAchievementModal(achievementId, imgUrl) {
 
     modalImg.src = imgUrl;
     modalImg.alt = a.title;
-    modalTitle.textContent = a.title;
+    
+    // Получаем текст редкости и категории на русском
+    const rarityText = {
+        'common': 'Обычная',
+        'rare': 'Редкая',
+        'epic': 'Особая',
+        'legendary': 'Легендарная'
+    }[a.rarity] || 'Обычная';
+    
+    const categoryText = {
+        'technical': 'Техническое',
+        'process': 'Процессовое'
+    }[a.category] || 'Техническое';
+    
+    // Обновляем заголовок с индикаторами под ним
+    modalTitle.innerHTML = `
+        <div class="modal-title-text">${a.title}</div>
+        <div class="modal-rarity-indicator rarity-${a.rarity}">${rarityText}</div>
+        <div class="modal-category-indicator">${categoryText} достижение</div>
+    `;
+    
     modalDesc.textContent = a.description;
+    
+    // Добавляем класс редкости к модальному окну для стилизации
+    modal.className = `modal rarity-${a.rarity}`;
 
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
