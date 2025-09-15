@@ -1,204 +1,278 @@
-// Данные о достижениях
+// Данные о достижениях с категориями и редкостью
 const achievementsData = {
+    // Технические достижения
     1: {
         title: "Первый релиз",
         description: "Успешно запустил первое мобильное приложение в App Store и Google Play. Приложение получило более 10,000 загрузок в первую неделю.",
-        active: true
+        category: "process",
+        rarity: "epic",
+        active: false
     },
     2: {
         title: "Архитектурный мастер",
         description: "Спроектировал и реализовал масштабируемую архитектуру приложения, которая выдержала нагрузку в 100,000+ пользователей одновременно.",
-        active: true
+        category: "technical",
+        rarity: "legendary",
+        active: false
     },
     3: {
         title: "Инноватор UX",
         description: "Создал революционный пользовательский интерфейс, который увеличил время сессии пользователей на 40% и получил награду 'Лучший UX дизайн'.",
+        category: "technical",
+        rarity: "epic",
         active: false
     },
     4: {
         title: "Оптимизатор производительности",
         description: "Оптимизировал производительность приложения, сократив время загрузки на 60% и потребление батареи на 30%.",
-        active: true
-    },
-    5: {
-        title: "Ментор команды",
-        description: "Обучил 5 новых разработчиков и создал систему код-ревью, которая повысила качество кода на 50%.",
+        category: "technical",
+        rarity: "rare",
         active: false
     },
     6: {
         title: "Дизайн-система",
         description: "Создала комплексную дизайн-систему для мобильного приложения, которая ускорила разработку новых экранов в 3 раза.",
+        category: "technical",
+        rarity: "rare",
         active: true
     },
     7: {
         title: "Анимации и микроинтерракции",
         description: "Разработала уникальные анимации и микроинтерракции, которые сделали приложение более живым и привлекательным для пользователей.",
-        active: false
+        category: "technical",
+        rarity: "rare",
+        active: true
     },
     8: {
         title: "Адаптивный дизайн",
         description: "Создала адаптивный дизайн, который идеально работает на всех размерах экранов от 4 до 7 дюймов.",
+        category: "technical",
+        rarity: "rare",
         active: true
     },
     9: {
         title: "Backend архитектор",
         description: "Спроектировал и реализовал высокопроизводительный backend, который обрабатывает 1M+ запросов в день с откликом менее 100ms.",
+        category: "technical",
+        rarity: "rare",
         active: true
     },
     10: {
         title: "Система аналитики",
         description: "Внедрил комплексную систему аналитики и A/B тестирования, которая помогла увеличить конверсию на 25%.",
-        active: false
+        category: "technical",
+        rarity: "rare",
+        active: true
     },
     11: {
         title: "Безопасность данных",
         description: "Реализовал многоуровневую систему безопасности, включая шифрование данных и защиту от атак, получив сертификат ISO 27001.",
+        category: "technical",
+        rarity: "rare",
         active: true
     },
     12: {
         title: "Микросервисная архитектура",
         description: "Перевел монолитное приложение на микросервисную архитектуру, что повысило надежность и масштабируемость системы.",
+        category: "technical",
+        rarity: "rare",
         active: true
     },
     13: {
         title: "CI/CD пайплайн",
         description: "Настроил автоматизированный пайплайн развертывания, который сократил время релиза с 2 дней до 2 часов.",
-        active: false
+        category: "technical",
+        rarity: "rare",
+        active: true
     },
     14: {
         title: "Мониторинг и алерты",
         description: "Внедрил систему мониторинга в реальном времени с умными алертами, что снизило время реакции на проблемы на 80%.",
+        category: "technical",
+        rarity: "rare",
         active: true
     },
     15: {
         title: "Тестирование качества",
         description: "Создала комплексную систему тестирования, которая повысила качество кода на 60% и снизила количество багов на 70%.",
+        category: "technical",
+        rarity: "rare",
         active: true
     },
     16: {
         title: "Автоматизация тестов",
         description: "Настроила автоматизированное тестирование, которое сократило время проверки релизов с 4 часов до 30 минут.",
+        category: "technical",
+        rarity: "rare",
         active: true
     },
     17: {
         title: "Пользовательские сценарии",
         description: "Разработала детальные пользовательские сценарии, которые помогли улучшить UX и увеличить конверсию на 35%.",
-        active: false
+        category: "technical",
+        rarity: "rare",
+        active: true
     },
     18: {
         title: "Кроссбраузерная совместимость",
         description: "Обеспечила полную совместимость приложения со всеми популярными браузерами и устройствами.",
+        category: "technical",
+        rarity: "rare",
         active: true
     },
     19: {
         title: "Документация API",
         description: "Создала подробную документацию API, которая ускорила интеграцию с внешними сервисами в 3 раза.",
+        category: "technical",
+        rarity: "rare",
         active: true
     },
     20: {
         title: "DevOps инженер",
         description: "Настроил инфраструктуру для автоматического развертывания и мониторинга приложения в облаке.",
-        active: false
+        category: "technical",
+        rarity: "rare",
+        active: true
     },
     21: {
         title: "Контейнеризация",
         description: "Внедрил Docker и Kubernetes для масштабируемого развертывания приложения.",
+        category: "process",
+        rarity: "rare",
         active: true
     },
     22: {
         title: "Безопасность инфраструктуры",
         description: "Реализовал многоуровневую систему безопасности для защиты инфраструктуры от атак.",
+        category: "technical",
+        rarity: "rare",
         active: true
     },
     23: {
         title: "Продукт-менеджер",
         description: "Управляла разработкой продукта от идеи до релиза, увеличив пользовательскую базу на 200%.",
-        active: false
+        category: "technical",
+        rarity: "rare",
+        active: true
     },
     24: {
         title: "Аналитика продуктов",
         description: "Внедрила систему аналитики, которая помогла принять ключевые решения по развитию продукта.",
+        category: "technical",
+        rarity: "rare",
         active: true
     },
     25: {
         title: "Пользовательские исследования",
         description: "Провела 50+ интервью с пользователями, что привело к кардинальному улучшению UX.",
+        category: "technical",
+        rarity: "rare",
         active: true
     },
     26: {
         title: "A/B тестирование",
         description: "Настроила систему A/B тестирования, которая помогла оптимизировать ключевые метрики продукта.",
+        category: "technical",
+        rarity: "rare",
         active: true
     },
     27: {
         title: "Конкурентный анализ",
         description: "Провела глубокий анализ конкурентов и выявила уникальные возможности для продукта.",
-        active: false
+        category: "technical",
+        rarity: "rare",
+        active: true
     },
     28: {
         title: "Roadmap планирование",
         description: "Создала детальный roadmap развития продукта на 2 года вперед.",
+        category: "technical",
+        rarity: "rare",
         active: true
     },
     29: {
         title: "Команда разработки",
         description: "Сформировала и управляла командой из 8 разработчиков, обеспечив высокую производительность.",
+        category: "technical",
+        rarity: "rare",
         active: true
     },
     30: {
         title: "QA инженер",
         description: "Создал комплексную систему тестирования, которая выявила 95% багов до релиза.",
-        active: false
+        category: "technical",
+        rarity: "rare",
+        active: true
     },
     31: {
         title: "Автоматизация тестирования",
         description: "Написал 200+ автоматических тестов, которые покрывают 80% функциональности приложения.",
+        category: "technical",
+        rarity: "rare",
         active: true
     },
     32: {
         title: "Тестирование производительности",
         description: "Провел нагрузочное тестирование, которое выявило узкие места и помогло оптимизировать производительность.",
+        category: "technical",
+        rarity: "rare",
         active: true
     },
     33: {
         title: "Мобильное тестирование",
         description: "Создал стратегию тестирования на 20+ различных устройствах и операционных системах.",
-        active: false
+        category: "technical",
+        rarity: "rare",
+        active: true
     },
     34: {
         title: "UI/UX дизайнер",
         description: "Создала интуитивный и привлекательный дизайн, который получил награду 'Лучший мобильный дизайн'.",
+        category: "technical",
+        rarity: "rare",
         active: true
     },
     35: {
         title: "Дизайн-система",
         description: "Разработала комплексную дизайн-систему, которая обеспечила консистентность во всем приложении.",
-        active: false
+        category: "technical",
+        rarity: "rare",
+        active: true
     },
     36: {
         title: "Прототипирование",
         description: "Создала интерактивные прототипы, которые ускорили процесс утверждения дизайна в 2 раза.",
+        category: "technical",
+        rarity: "rare",
         active: true
     },
     37: {
         title: "Лидерство в проекте",
         description: "Возглавил критический проект и успел к сроку без снижения качества.",
+        category: "technical",
+        rarity: "rare",
         active: true
     },
     38: {
         title: "Оптимизация затрат",
         description: "Сократил инфраструктурные расходы на 25% благодаря оптимизации ресурсов.",
-        active: false
+        category: "technical",
+        rarity: "rare",
+        active: true
     },
     39: {
         title: "Повышение качества",
         description: "Внедрил дополнительные проверки качества, что снизило количество инцидентов на 40%.",
+        category: "technical",
+        rarity: "rare",
         active: true
     },
     40: {
         title: "Наставничество",
         description: "Организовал серию внутренних воркшопов и обучил коллег новым практикам.",
-        active: false
+        category: "technical",
+        rarity: "rare",
+        active: true
     }
 };
 
@@ -243,6 +317,45 @@ function getAchievementImageUrl(achievementId) {
     return `source/achievements/achievement_${achievementId}.png`; // Или .jpg, .jpeg, .svg
 }
 
+// Функция создания карточки достижения с редкостью
+function createAchievementCard(achievementId, achievement) {
+    const item = document.createElement('div');
+    const isActive = achievement.active;
+    const rarityClass = `rarity-${achievement.rarity}`;
+    
+    item.className = `achievement-card ${isActive ? 'achievement-card--active' : 'achievement-card--inactive'} ${rarityClass}`;
+    item.setAttribute('data-achievement', String(achievementId));
+    item.setAttribute('data-rarity', achievement.rarity);
+    
+    const imgUrl = getAchievementImageUrl(achievementId);
+    
+    // Получаем текст редкости на русском
+    const rarityText = {
+        'common': 'Обычная',
+        'rare': 'Редкая',
+        'epic': 'Особая',
+        'legendary': 'Легендарная'
+    }[achievement.rarity] || 'Обычная';
+    
+    item.innerHTML = `
+        <div class="achievement-card__image">
+            <img src="${imgUrl}" alt="${achievement.title}">
+            <div class="rarity-indicator">${rarityText}</div>
+        </div>
+        <div class="achievement-card__content">
+            <h3>${achievement.title}</h3>
+            <p>${achievement.description}</p>
+        </div>
+    `;
+    
+    // Клик по карточке — открыть модалку (только для активных)
+    if (isActive) {
+        item.addEventListener('click', () => openMemberAchievementModal(achievementId, imgUrl));
+    }
+    
+    return item;
+}
+
 // Рендер страницы участника (member.html)
 function renderMemberPage() {
     const params = new URLSearchParams(window.location.search);
@@ -269,29 +382,51 @@ function renderMemberPage() {
 
     if (listEl) {
         listEl.innerHTML = '';
+        
+        // Разделяем достижения по категориям
+        const technicalAchievements = [];
+        const processAchievements = [];
+        
         ids.forEach((aid) => {
             const a = achievementsData[aid];
             if (!a) return;
-            const item = document.createElement('div');
-            item.className = a.active ? 'achievement-card achievement-card--active' : 'achievement-card achievement-card--inactive';
-            item.setAttribute('data-achievement', String(aid));
-            // Используем локальные изображения из папки source/achievements
-            const imgUrl = getAchievementImageUrl(aid);
-            item.innerHTML = `
-                <div class="achievement-card__image">
-                    <img src="${imgUrl}" alt="${a.title}">
-                </div>
-                <div class="achievement-card__content">
-                    <h3>${a.title}</h3>
-                    <p>${a.description}</p>
-                </div>
-            `;
-            // Клик по карточке — открыть модалку (только для активных)
-            if (a.active) {
-                item.addEventListener('click', () => openMemberAchievementModal(aid, imgUrl));
+            
+            if (a.category === 'technical') {
+                technicalAchievements.push(aid);
+            } else if (a.category === 'process') {
+                processAchievements.push(aid);
             }
-            listEl.appendChild(item);
         });
+        
+        // Технические достижения
+        if (technicalAchievements.length > 0) {
+            const techSection = document.createElement('div');
+            techSection.className = 'achievement-category';
+            techSection.innerHTML = '<h2 class="category-title">Технические достижения</h2>';
+            
+            technicalAchievements.forEach((aid) => {
+                const a = achievementsData[aid];
+                const item = createAchievementCard(aid, a);
+                techSection.appendChild(item);
+            });
+            
+            listEl.appendChild(techSection);
+        }
+        
+        // Процессовые достижения
+        if (processAchievements.length > 0) {
+            const processSection = document.createElement('div');
+            processSection.className = 'achievement-category';
+            processSection.innerHTML = '<h2 class="category-title">Процессовые достижения</h2>';
+            
+            processAchievements.forEach((aid) => {
+                const a = achievementsData[aid];
+                const item = createAchievementCard(aid, a);
+                processSection.appendChild(item);
+            });
+            
+            listEl.appendChild(processSection);
+        }
     }
 }
 
