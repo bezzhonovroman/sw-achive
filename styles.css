@@ -130,6 +130,35 @@ header h1 {
     gap: 4px;
 }
 
+.status-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 8px;
+    padding: 8px 12px;
+    background: linear-gradient(135deg, rgba(225, 25, 49, 0.1), rgba(0, 179, 200, 0.1));
+    border-radius: 6px;
+    border: 1px solid rgba(225, 25, 49, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.status-text {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--accent-red);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+
+.status-description {
+    font-size: 0.7rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+    line-height: 1.2;
+    font-style: italic;
+}
+
 .member-info h2 {
     font-size: 1.1rem;
     color: var(--text-primary);
@@ -690,6 +719,20 @@ header h1 {
     
     .member-info {
         align-items: center;
+    }
+    
+    .status-container {
+        padding: 6px 10px;
+        margin-bottom: 6px;
+    }
+    
+    .status-text {
+        font-size: 0.7rem;
+        letter-spacing: 0.3px;
+    }
+    
+    .status-description {
+        font-size: 0.65rem;
     }
     
     .logo-container {

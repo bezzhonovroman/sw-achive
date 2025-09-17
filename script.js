@@ -616,18 +616,89 @@ function calculateMemberProgress(memberId) {
     return Math.round((activeCount / achievementIds.length) * 100);
 }
 
-// Функция для обновления прогресс-баров на главной странице
+// Функция для определения статуса по проценту
+function getStatusByProgress(progress) {
+    if (progress >= 100) {
+        return {
+            text: "100% — Абсолют",
+            description: "Достиг всего, к чему стремился",
+            gradient: "linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(245, 158, 11, 0.15))",
+            border: "rgba(251, 191, 36, 0.4)",
+            textColor: "#FBBF24"
+        };
+    } else if (progress >= 76) {
+        return {
+            text: "76–99% — Легенда",
+            description: "Остался последний шаг",
+            gradient: "linear-gradient(135deg, rgba(147, 51, 234, 0.15), rgba(126, 34, 206, 0.15))",
+            border: "rgba(147, 51, 234, 0.3)",
+            textColor: "#9333EA"
+        };
+    } else if (progress >= 51) {
+        return {
+            text: "51–75% — Король",
+            description: "Ведёт за собой, почти на вершине",
+            gradient: "linear-gradient(135deg, rgba(225, 25, 49, 0.15), rgba(240, 68, 85, 0.15))",
+            border: "rgba(225, 25, 49, 0.3)",
+            textColor: "#E11931"
+        };
+    } else if (progress >= 26) {
+        return {
+            text: "26–50% — Мастер",
+            description: "Половина пути пройдена",
+            gradient: "linear-gradient(135deg, rgba(0, 179, 200, 0.15), rgba(6, 182, 212, 0.15))",
+            border: "rgba(0, 179, 200, 0.3)",
+            textColor: "#00B3C8"
+        };
+    } else if (progress >= 11) {
+        return {
+            text: "11–25% — Искатель",
+            description: "Уже есть первые успехи",
+            gradient: "linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(22, 163, 74, 0.15))",
+            border: "rgba(34, 197, 94, 0.3)",
+            textColor: "#22C55E"
+        };
+    } else {
+        return {
+            text: "0–10% — Новичок",
+            description: "Ты в самом начале пути!",
+            gradient: "linear-gradient(135deg, rgba(120, 119, 116, 0.15), rgba(163, 163, 163, 0.15))",
+            border: "rgba(120, 119, 116, 0.3)",
+            textColor: "#787774"
+        };
+    }
+}
+
+// Функция для обновления прогресс-баров и статусов на главной странице
 function updateProgressBars() {
     for (let memberId = 1; memberId <= 8; memberId++) {
         const progress = calculateMemberProgress(memberId);
         const progressFill = document.querySelector(`[data-member-id="${memberId}"].progress-fill`);
         const progressText = document.querySelector(`[data-member-id="${memberId}"].progress-text`);
+        const statusContainer = document.querySelector(`.status-container[data-member-id="${memberId}"]`);
         
         if (progressFill && progressText) {
             // Отложим анимацию для плавного эффекта
             setTimeout(() => {
                 progressFill.style.width = `${progress}%`;
                 progressText.textContent = `${progress}%`;
+                
+                // Обновляем статус
+                if (statusContainer) {
+                    const status = getStatusByProgress(progress);
+                    const statusText = statusContainer.querySelector('.status-text');
+                    const statusDescription = statusContainer.querySelector('.status-description');
+                    
+                    if (statusText && statusDescription) {
+                        statusText.textContent = status.text;
+                        statusText.style.color = status.textColor;
+                        statusDescription.textContent = status.description;
+                        
+                        // Обновляем стили контейнера
+                        statusContainer.style.background = status.gradient;
+                        statusContainer.style.borderColor = status.border;
+                    }
+                }
             }, memberId * 100); // Последовательная анимация
         }
     }
