@@ -246,25 +246,25 @@ const achievementsData = {
 // Индивидуальные достижения пользователей с их статусами
 const userAchievements = {
     1: { // Марина Селезнева
-        1: { active: false },     // Кодовой дождь
-        2: { active: false },     // Чистильщик
-        3: { active: false },    // Фабрика PR
-        4: { active: false },     // Феникс
-        5: { active: false },     // Глаз орла
-        6: { active: false },    // Наставник
-        7: { active: false },     // Балансир
-        8: { active: false },    // Неприкасаемый
-        9: { active: false },     // Победитель по жизни
-        10: { active: false },    // Баг-киллер
-        21: { active: false },    // Ретроспектива Фичи
-        22: { active: false },   // Голос Команды
-        23: { active: false },    // Инициатор Церемоний
-        24: { active: false },    // Страж ДоР
-        25: { active: false },   // Агент Перемен
-        26: { active: false },    // Гайдмастер
-        27: { active: false },    // Автоматизатор Рутины
-        28: { active: false },   // Мировой дипломат
-        29: { active: false }     // Проводник Ретроспективы
+        1: { active: true },     // Кодовой дождь
+        2: { active: true },     // Чистильщик
+        3: { active: true },    // Фабрика PR
+        4: { active: true },     // Феникс
+        5: { active: true },     // Глаз орла
+        6: { active: true },    // Наставник
+        7: { active: true },     // Балансир
+        8: { active: true },    // Неприкасаемый
+        9: { active: true },     // Победитель по жизни
+        10: { active: true },    // Баг-киллер
+        21: { active: true },    // Ретроспектива Фичи
+        22: { active: true },   // Голос Команды
+        23: { active: true },    // Инициатор Церемоний
+        24: { active: true },    // Страж ДоР
+        25: { active: true },   // Агент Перемен
+        26: { active: true },    // Гайдмастер
+        27: { active: true },    // Автоматизатор Рутины
+        28: { active: true },   // Мировой дипломат
+        29: { active: true }     // Проводник Ретроспективы
     },
     2: { // Павел Кривцов
         1: { active: false },     // Кодовой дождь
@@ -407,21 +407,28 @@ const membersInfo = {
     8: { name: 'Роман Безжонов', role: 'QA Engineer', avatar: 'source/bezzhonov.jpg' }
 };
 
-// Функция для получения URL изображения достижения
+// Функция для получения URL изображения достижения по редкости
 function getAchievementImageUrl(achievementId) {
-    // Константа для переключения между заглушкой и реальными изображениями
-    const USE_PLACEHOLDER = true; // Поставьте false, когда загрузите реальные изображения
-    
-    if (USE_PLACEHOLDER) {
-        return 'source/achievements/placeholder.svg';
+    const achievement = achievementsData[achievementId];
+    if (!achievement) {
+        return 'source/achievements/achievement_4.png'; // Обычное достижение как fallback
     }
     
-    // Когда загрузите реальные изображения:
-    // 1. Поставьте USE_PLACEHOLDER = false
-    // 2. Название файлов должно быть: achievement_1.png, achievement_2.jpg, и т.д.
-    // 3. Выберите нужное расширение файла ниже:
+    // Сопоставляем редкость с номером изображения:
+    // achievement_1.png - Легендарные достижения (legendary)
+    // achievement_2.png - Особые достижения (epic) 
+    // achievement_3.png - Редкие достижения (rare)
+    // achievement_4.png - Обычные достижения (common)
     
-    return `source/achievements/achievement_${achievementId}.png`; // Или .jpg, .jpeg, .svg
+    const rarityToImageMap = {
+        'legendary': 'achievement_1.png',
+        'epic': 'achievement_2.png', 
+        'rare': 'achievement_3.png',
+        'common': 'achievement_4.png'
+    };
+    
+    const imageName = rarityToImageMap[achievement.rarity] || 'achievement_4.png';
+    return `source/achievements/${imageName}`;
 }
 
 // Функция создания карточки достижения с индивидуальным статусом
