@@ -620,24 +620,21 @@ function calculateMemberProgress(memberId) {
 function getStatusByProgress(progress) {
     if (progress >= 100) {
         return {
-            text: "100% — Абсолют",
-            description: "Достиг всего, к чему стремился",
+            text: "100% — Оракул",
             gradient: "linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(245, 158, 11, 0.15))",
             border: "rgba(251, 191, 36, 0.4)",
             textColor: "#FBBF24"
         };
     } else if (progress >= 76) {
         return {
-            text: "76–99% — Легенда",
-            description: "Остался последний шаг",
+            text: "76–99% — Просветленный",
             gradient: "linear-gradient(135deg, rgba(147, 51, 234, 0.15), rgba(126, 34, 206, 0.15))",
             border: "rgba(147, 51, 234, 0.3)",
             textColor: "#9333EA"
         };
     } else if (progress >= 51) {
         return {
-            text: "51–75% — Король",
-            description: "Ведёт за собой, почти на вершине",
+            text: "51–75% — Гуру",
             gradient: "linear-gradient(135deg, rgba(225, 25, 49, 0.15), rgba(240, 68, 85, 0.15))",
             border: "rgba(225, 25, 49, 0.3)",
             textColor: "#E11931"
@@ -645,15 +642,13 @@ function getStatusByProgress(progress) {
     } else if (progress >= 26) {
         return {
             text: "26–50% — Мастер",
-            description: "Половина пути пройдена",
             gradient: "linear-gradient(135deg, rgba(0, 179, 200, 0.15), rgba(6, 182, 212, 0.15))",
             border: "rgba(0, 179, 200, 0.3)",
             textColor: "#00B3C8"
         };
     } else if (progress >= 11) {
         return {
-            text: "11–25% — Искатель",
-            description: "Уже есть первые успехи",
+            text: "11–25% — Знаток",
             gradient: "linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(22, 163, 74, 0.15))",
             border: "rgba(34, 197, 94, 0.3)",
             textColor: "#22C55E"
@@ -661,7 +656,6 @@ function getStatusByProgress(progress) {
     } else {
         return {
             text: "0–10% — Новичок",
-            description: "Ты в самом начале пути!",
             gradient: "linear-gradient(135deg, rgba(120, 119, 116, 0.15), rgba(163, 163, 163, 0.15))",
             border: "rgba(120, 119, 116, 0.3)",
             textColor: "#787774"
@@ -676,6 +670,7 @@ function updateProgressBars() {
         const progressFill = document.querySelector(`[data-member-id="${memberId}"].progress-fill`);
         const progressText = document.querySelector(`[data-member-id="${memberId}"].progress-text`);
         const statusContainer = document.querySelector(`.status-container[data-member-id="${memberId}"]`);
+        const statusSkeleton = document.querySelector(`.status-skeleton[data-member-id="${memberId}"]`);
         
         if (progressFill && progressText) {
             // Отложим анимацию для плавного эффекта
@@ -687,16 +682,22 @@ function updateProgressBars() {
                 if (statusContainer) {
                     const status = getStatusByProgress(progress);
                     const statusText = statusContainer.querySelector('.status-text');
-                    const statusDescription = statusContainer.querySelector('.status-description');
                     
-                    if (statusText && statusDescription) {
+                    if (statusText) {
                         statusText.textContent = status.text;
                         statusText.style.color = status.textColor;
-                        statusDescription.textContent = status.description;
                         
                         // Обновляем стили контейнера
                         statusContainer.style.background = status.gradient;
                         statusContainer.style.borderColor = status.border;
+                        
+                        // Скрываем skeleton и показываем статус
+                        setTimeout(() => {
+                            if (statusSkeleton) {
+                                statusSkeleton.style.display = 'none';
+                            }
+                            statusContainer.classList.add('visible');
+                        }, 300 + (memberId * 50)); // Последовательное появление
                     }
                 }
             }, memberId * 100); // Последовательная анимация

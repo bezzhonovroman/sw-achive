@@ -130,16 +130,37 @@ header h1 {
     gap: 4px;
 }
 
+.status-wrapper {
+    position: relative;
+    margin-bottom: 8px;
+    min-height: 44px; /* фиксированная высота для стабильности */
+}
+
 .status-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 2px;
-    margin-bottom: 8px;
     padding: 8px 12px;
     background: linear-gradient(135deg, rgba(225, 25, 49, 0.1), rgba(0, 179, 200, 0.1));
     border-radius: 6px;
     border: 1px solid rgba(225, 25, 49, 0.2);
     backdrop-filter: blur(5px);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-5px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+    width: calc(100% - 2px);
+    height: 44px;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+.status-container.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 .status-text {
@@ -157,6 +178,46 @@ header h1 {
     color: var(--text-secondary);
     line-height: 1.2;
     font-style: italic;
+}
+
+/* Skeleton эффект для статусов во время загрузки */
+.status-skeleton {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 12px;
+    background: rgba(39, 42, 49, 0.3);
+    border-radius: 6px;
+    border: 1px solid rgba(39, 42, 49, 0.4);
+    backdrop-filter: blur(5px);
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    height: 44px;
+    box-sizing: border-box;
+}
+
+.status-skeleton::before {
+    content: '';
+    height: 10px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    border-radius: 4px;
+    margin-bottom: 2px;
+}
+
+.status-skeleton::after {
+    content: '';
+    height: 8px;
+    width: 70%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+    border-radius: 4px;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
 }
 
 .member-info h2 {
@@ -721,9 +782,16 @@ header h1 {
         align-items: center;
     }
     
+    .status-wrapper {
+        margin-bottom: 6px;
+    }
+    
     .status-container {
         padding: 6px 10px;
-        margin-bottom: 6px;
+    }
+    
+    .status-skeleton {
+        padding: 6px 10px;
     }
     
     .status-text {
