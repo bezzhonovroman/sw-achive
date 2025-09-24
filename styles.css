@@ -783,24 +783,47 @@ header h1 {
     }
     
     .status-wrapper {
-        margin-bottom: 6px;
+        margin-bottom: 12px;
+        min-height: 38px; /* уменьшаем для мобильной версии */
+        width: 100%;
     }
     
     .status-container {
-        padding: 6px 10px;
+        padding: 6px 8px;
+        height: 38px; /* соответствует min-height wrapper'а */
+        width: 100%;
+        position: relative; /* изменяем с absolute на relative */
+        gap: 1px;
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
     }
     
     .status-skeleton {
-        padding: 6px 10px;
+        padding: 6px 8px;
+        height: 38px;
+        width: 100%;
     }
     
     .status-text {
-        font-size: 0.7rem;
-        letter-spacing: 0.3px;
+        font-size: 0.65rem;
+        letter-spacing: 0.2px;
+        line-height: 1.1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex: 1;
     }
     
     .status-description {
-        font-size: 0.65rem;
+        font-size: 0.6rem;
+        line-height: 1.1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 40%;
+        text-align: right;
+        display: none; /* скрываем описание на мобильных */
     }
     
     .logo-container {
@@ -887,5 +910,116 @@ header h1 {
     .achievement-item {
         width: 56px;
         height: 56px;
+    }
+    
+    /* Дополнительные стили для статусов на очень маленьких экранах */
+    .status-wrapper {
+        min-height: 32px;
+    }
+    
+    .status-container {
+        height: 32px;
+        padding: 4px 6px;
+    }
+    
+    .status-skeleton {
+        height: 32px;
+        padding: 4px 6px;
+    }
+    
+    .status-text {
+        font-size: 0.6rem;
+        letter-spacing: 0.1px;
+    }
+    
+    .team-member {
+        padding: 16px;
+    }
+    
+    .member-info h2 {
+        font-size: 1rem;
+    }
+    
+    .role {
+        font-size: 0.8rem;
+        margin-bottom: 6px;
+    }
+    
+    .progress-container {
+        gap: 6px;
+    }
+    
+    .progress-bar {
+        width: 100px;
+        height: 5px;
+    }
+    
+    .progress-text {
+        font-size: 0.7rem;
+        width: 28px;
+    }
+}
+
+/* Медиа-запросы для планшетов */
+@media (min-width: 481px) and (max-width: 768px) {
+    .status-wrapper {
+        min-height: 40px;
+    }
+    
+    .status-container {
+        height: 40px;
+        padding: 7px 10px;
+        gap: 2px;
+    }
+    
+    .status-skeleton {
+        height: 40px;
+        padding: 7px 10px;
+    }
+    
+    .status-text {
+        font-size: 0.7rem;
+        letter-spacing: 0.25px;
+    }
+    
+    .status-description {
+        font-size: 0.6rem;
+        display: block; /* показываем описание на планшетах */
+        max-width: 50%;
+    }
+    
+    .team-member {
+        padding: 18px;
+    }
+}
+
+/* Улучшения для больших экранов */
+@media (min-width: 1201px) {
+    .container {
+        max-width: 1400px;
+        padding: 24px;
+    }
+    
+    .team-section {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 24px;
+    }
+    
+    .team-member {
+        padding: 28px;
+    }
+    
+    .status-container {
+        padding: 10px 14px;
+        height: 48px;
+    }
+    
+    .status-skeleton {
+        padding: 10px 14px;
+        height: 48px;
+    }
+    
+    .status-wrapper {
+        min-height: 48px;
     }
 }
