@@ -182,8 +182,8 @@ const achievementsData = {
         rarity: "common"
     },
     31: {
-        title: "Победитель по жизни",
-        description: "Попасть в топ от Павла Аннина 5 раз.",
+        title: "Один выстрел. Одну попадание",
+        description: "Пройти защиту технического моделирования с первого раза",
         category: "technical",
         rarity: "legendary"
     },
