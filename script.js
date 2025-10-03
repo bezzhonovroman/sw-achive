@@ -182,7 +182,7 @@ const achievementsData = {
         rarity: "common"
     },
     31: {
-        title: "Один выстрел. Одну попадание",
+        title: "Один выстрел. Одно попадание",
         description: "Пройти защиту технического моделирования с первого раза",
         category: "technical",
         rarity: "legendary"
