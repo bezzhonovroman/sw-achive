@@ -398,13 +398,13 @@ const userAchievements = {
         19: { active: false },    // Помощник большого брата
         20: { active: false },    // Баг-локатор
         21: { active: false },   // Ретроспектива Фичи
-        22: { active: false },   // Голос Команды
+        22: { active: true },   // Голос Команды
         23: { active: false },   // Инициатор Церемоний
         24: { active: false },    // Страж ДоР
         25: { active: false },   // Агент Перемен
         26: { active: false },    // Гайдмастер
         27: { active: false },    // Автоматизатор Рутины
-        28: { active: false },   // Мировой дипломат
+        28: { active: true },   // Мировой дипломат
         29: { active: false }    // Проводник Ретроспективы
     }
 };
