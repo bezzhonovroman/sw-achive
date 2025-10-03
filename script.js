@@ -176,70 +176,64 @@ const achievementsData = {
         rarity: "rare"
     },
     30: {
-        title: "QA инженер",
-        description: "Создал комплексную систему тестирования, которая выявила 95% багов до релиза.",
+        title: "Без паники",
+        description: "За спринт не было ни одной panic в коде.",
         category: "technical",
-        rarity: "rare"
+        rarity: "common"
     },
     31: {
-        title: "Автоматизация тестирования",
-        description: "Написал 200+ автоматических тестов, которые покрывают 80% функциональности приложения.",
+        title: "Один выстрел. Одно попадание",
+        description: "Пройти защиту технического моделирования с первого раза",
         category: "technical",
-        rarity: "rare"
+        rarity: "legendary"
     },
     32: {
-        title: "Тестирование производительности",
-        description: "Провел нагрузочное тестирование, которое выявило узкие места и помогло оптимизировать производительность.",
+        title: "На грани фантастики",
+        description: "Ни один автотест не упал за спринт.",
         category: "technical",
         rarity: "rare"
     },
     33: {
-        title: "Мобильное тестирование",
-        description: "Создал стратегию тестирования на 20+ различных устройствах и операционных системах.",
-        category: "technical",
+        title: "Консильери",
+        description: "Договориться со смежной командой и вывести на них задачу.",
+        category: "process",
         rarity: "rare"
     },
     34: {
-        title: "UI/UX дизайнер",
-        description: "Создала интуитивный и привлекательный дизайн, который получил награду 'Лучший мобильный дизайн'.",
+        title: "Герой хотфиксов",
+        description: "Пофиксить баг на проде быстрее, чем его заметили.",
         category: "technical",
-        rarity: "rare"
+        rarity: "epic"
     },
     35: {
-        title: "Дизайн-система",
-        description: "Разработала комплексную дизайн-систему, которая обеспечила консистентность во всем приложении.",
+        title: "Повелитель Swagger'а",
+        description: "Документация полностью совпадает с реальностью.",
         category: "technical",
         rarity: "rare"
     },
     36: {
-        title: "Прототипирование",
-        description: "Создала интерактивные прототипы, которые ускорили процесс утверждения дизайна в 2 раза.",
+        title: "Монах рефакторинга",
+        description: "Переписать сервис так, что он стал быстрее (подтверждено замерами).",
         category: "technical",
-        rarity: "rare"
+        rarity: "epic"
     },
     37: {
-        title: "Лидерство в проекте",
-        description: "Возглавил критический проект и успел к сроку без снижения качества.",
+        title: "Страйк!",
+        description: "Ни одной ошибки в пяти релизах подряд.",
         category: "technical",
-        rarity: "rare"
+        rarity: "legendary"
     },
     38: {
-        title: "Оптимизация затрат",
-        description: "Сократил инфраструктурные расходы на 25% благодаря оптимизации ресурсов.",
+        title: "Часовой",
+        description: "Исправить ошибку с форматом времени, не поломав старые версии.",
         category: "technical",
         rarity: "rare"
     },
     39: {
-        title: "Повышение качества",
-        description: "Внедрил дополнительные проверки качества, что снизило количество инцидентов на 40%.",
+        title: "Баг-киллер",
+        description: "Исправить ≥3 багов за спринт.",
         category: "technical",
-        rarity: "rare"
-    },
-    40: {
-        title: "Наставничество",
-        description: "Организовал серию внутренних воркшопов и обучил коллег новым практикам.",
-        category: "technical",
-        rarity: "rare"
+        rarity: "epic"
     }
 };
 
@@ -338,7 +332,17 @@ const userAchievements = {
         26: { active: false },    // Гайдмастер
         27: { active: false },   // Автоматизатор Рутины
         28: { active: false },    // Мировой дипломат
-        29: { active: false }     // Проводник Ретроспективы
+        29: { active: false },    // Проводник Ретроспективы
+        30: { active: false },    // Без паники
+        31: { active: false },    // Победитель по жизни
+        32: { active: false },    // На грани фантастики
+        33: { active: false },    // Консильери
+        34: { active: false },    // Герой хотфиксов
+        35: { active: false },    // Повелитель Swagger'а
+        36: { active: false },    // Монах рефакторинга
+        37: { active: false },    // Страйк!
+        38: { active: false },    // Часовой
+        39: { active: false }     // Баг-киллер
     },
     6: { // Никита Михайлюк
         21: { active: false },   // Ретроспектива Фичи
@@ -349,7 +353,17 @@ const userAchievements = {
         26: { active: false },    // Гайдмастер
         27: { active: false },   // Автоматизатор Рутины
         28: { active: false },    // Мировой дипломат
-        29: { active: false }     // Проводник Ретроспективы
+        29: { active: false },    // Проводник Ретроспективы
+        30: { active: false },    // Без паники
+        31: { active: true },    // Победитель по жизни
+        32: { active: false },    // На грани фантастики
+        33: { active: true },    // Консильери
+        34: { active: false },    // Герой хотфиксов
+        35: { active: false },    // Повелитель Swagger'а
+        36: { active: false },    // Монах рефакторинга
+        37: { active: false },    // Страйк!
+        38: { active: false },    // Часовой
+        39: { active: false }     // Баг-киллер
     },
     7: { // Екатерина Антипова
         11: { active: false },    // 100% краш
@@ -407,21 +421,28 @@ const membersInfo = {
     8: { name: 'Роман Безжонов', role: 'QA Engineer', avatar: 'source/bezzhonov.jpg' }
 };
 
-// Функция для получения URL изображения достижения
+// Функция для получения URL изображения достижения по редкости
 function getAchievementImageUrl(achievementId) {
-    // Константа для переключения между заглушкой и реальными изображениями
-    const USE_PLACEHOLDER = true; // Поставьте false, когда загрузите реальные изображения
-    
-    if (USE_PLACEHOLDER) {
-        return 'source/achievements/placeholder.svg';
+    const achievement = achievementsData[achievementId];
+    if (!achievement) {
+        return 'source/achievements/achievement_4.png'; // Обычное достижение как fallback
     }
     
-    // Когда загрузите реальные изображения:
-    // 1. Поставьте USE_PLACEHOLDER = false
-    // 2. Название файлов должно быть: achievement_1.png, achievement_2.jpg, и т.д.
-    // 3. Выберите нужное расширение файла ниже:
+    // Сопоставляем редкость с номером изображения:
+    // achievement_1.png - Легендарные достижения (legendary)
+    // achievement_2.png - Особые достижения (epic) 
+    // achievement_3.png - Редкие достижения (rare)
+    // achievement_4.png - Обычные достижения (common)
     
-    return `source/achievements/achievement_${achievementId}.png`; // Или .jpg, .jpeg, .svg
+    const rarityToImageMap = {
+        'legendary': 'achievement_1.png',
+        'epic': 'achievement_2.png', 
+        'rare': 'achievement_3.png',
+        'common': 'achievement_4.png'
+    };
+    
+    const imageName = rarityToImageMap[achievement.rarity] || 'achievement_4.png';
+    return `source/achievements/${imageName}`;
 }
 
 // Функция создания карточки достижения с индивидуальным статусом

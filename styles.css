@@ -72,19 +72,54 @@ header {
     margin-bottom: 40px;
 }
 
+/* ВАРИАНТ 1: МИНИМАЛИСТИЧНЫЙ СТИЛЬ */
 .logo-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 0;
 }
 
 header h1 {
-    color: var(--accent-red);
-    font-size: 2.2rem;
-    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1.75rem;
+    font-weight: 500;
     margin: 0;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
+    position: relative;
+    opacity: 0.9;
+}
+
+/* Улучшенный акцент под заголовком */
+header h1::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-red) 0%, var(--accent-red-hover) 50%, var(--accent-teal) 100%);
+    margin: 12px auto 0;
+    border-radius: 2px;
+    opacity: 0.85;
+    box-shadow: 0 1px 3px rgba(225, 25, 49, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* Эффект при наведении на header */
+header:hover h1::after {
+    width: 100px;
+    opacity: 1;
+    box-shadow: 0 2px 8px rgba(225, 25, 49, 0.4);
+}
+
+/* Стили для подзаголовка */
+header .subtitle {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 12px 0 0 0;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    opacity: 0.8;
 }
 
 .team-section {
@@ -775,8 +810,24 @@ header h1 {
     }
     
     header h1 {
-        font-size: 2rem;
-        color: var(--accent-red);
+        font-size: 1.5rem;
+        opacity: 1;
+    }
+    
+    header h1::after {
+        width: 60px;
+        height: 2.5px;
+        margin: 10px auto 0;
+    }
+    
+    header:hover h1::after {
+        width: 80px;
+    }
+    
+    header .subtitle {
+        font-size: 0.8rem;
+        margin: 8px 0 0 0;
+        letter-spacing: 0.2px;
     }
     
     .team-section {
@@ -803,29 +854,52 @@ header h1 {
     }
     
     .status-wrapper {
-        margin-bottom: 6px;
+        margin-bottom: 12px;
+        min-height: 38px; /* уменьшаем для мобильной версии */
+        width: 100%;
     }
     
     .status-container {
-        padding: 6px 10px;
+        padding: 6px 8px;
+        height: 38px; /* соответствует min-height wrapper'а */
+        width: 100%;
+        position: relative; /* изменяем с absolute на relative */
+        gap: 1px;
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
     }
     
     .status-skeleton {
-        padding: 6px 10px;
+        padding: 6px 8px;
+        height: 38px;
+        width: 100%;
     }
     
     .status-text {
-        font-size: 0.7rem;
-        letter-spacing: 0.3px;
+        font-size: 0.65rem;
+        letter-spacing: 0.2px;
+        line-height: 1.1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex: 1;
     }
     
     .status-description {
-        font-size: 0.65rem;
+        font-size: 0.6rem;
+        line-height: 1.1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 40%;
+        text-align: right;
+        display: none; /* скрываем описание на мобильных */
     }
     
     .logo-container {
         flex-direction: column;
-        gap: 15px;
+        gap: 0;
     }
     
     .achievements-grid {
@@ -907,5 +981,137 @@ header h1 {
     .achievement-item {
         width: 56px;
         height: 56px;
+    }
+    
+    /* Дополнительные стили для статусов на очень маленьких экранах */
+    .status-wrapper {
+        min-height: 32px;
+    }
+    
+    .status-container {
+        height: 32px;
+        padding: 4px 6px;
+    }
+    
+    .status-skeleton {
+        height: 32px;
+        padding: 4px 6px;
+    }
+    
+    .status-text {
+        font-size: 0.6rem;
+        letter-spacing: 0.1px;
+    }
+    
+    .team-member {
+        padding: 16px;
+    }
+    
+    .member-info h2 {
+        font-size: 1rem;
+    }
+    
+    .role {
+        font-size: 0.8rem;
+        margin-bottom: 6px;
+    }
+    
+    .progress-container {
+        gap: 6px;
+    }
+    
+    .progress-bar {
+        width: 100px;
+        height: 5px;
+    }
+    
+    .progress-text {
+        font-size: 0.7rem;
+        width: 28px;
+    }
+    
+    /* Минималистичные стили для маленьких экранов */
+    header h1 {
+        font-size: 1.25rem;
+    }
+    
+    header h1::after {
+        width: 50px;
+        height: 2px;
+        margin: 8px auto 0;
+    }
+    
+    header:hover h1::after {
+        width: 60px;
+    }
+    
+    header .subtitle {
+        font-size: 0.75rem;
+        margin: 6px 0 0 0;
+        letter-spacing: 0.2px;
+    }
+}
+
+/* Медиа-запросы для планшетов */
+@media (min-width: 481px) and (max-width: 768px) {
+    .status-wrapper {
+        min-height: 40px;
+    }
+    
+    .status-container {
+        height: 40px;
+        padding: 7px 10px;
+        gap: 2px;
+    }
+    
+    .status-skeleton {
+        height: 40px;
+        padding: 7px 10px;
+    }
+    
+    .status-text {
+        font-size: 0.7rem;
+        letter-spacing: 0.25px;
+    }
+    
+    .status-description {
+        font-size: 0.6rem;
+        display: block; /* показываем описание на планшетах */
+        max-width: 50%;
+    }
+    
+    .team-member {
+        padding: 18px;
+    }
+}
+
+/* Улучшения для больших экранов */
+@media (min-width: 1201px) {
+    .container {
+        max-width: 1400px;
+        padding: 24px;
+    }
+    
+    .team-section {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 24px;
+    }
+    
+    .team-member {
+        padding: 28px;
+    }
+    
+    .status-container {
+        padding: 10px 14px;
+        height: 48px;
+    }
+    
+    .status-skeleton {
+        padding: 10px 14px;
+        height: 48px;
+    }
+    
+    .status-wrapper {
+        min-height: 48px;
     }
 }
