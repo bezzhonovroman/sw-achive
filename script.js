@@ -355,7 +355,7 @@ const userAchievements = {
         28: { active: false },    // Мировой дипломат
         29: { active: false },    // Проводник Ретроспективы
         30: { active: false },    // Без паники
-        31: { active: false },    // Победитель по жизни
+        31: { active: true },    // Победитель по жизни
         32: { active: false },    // На грани фантастики
         33: { active: false },    // Консильери
         34: { active: false },    // Герой хотфиксов
