@@ -247,7 +247,7 @@ const userAchievements = {
         5: { active: false },     // Глаз орла
         6: { active: false },    // Наставник
         7: { active: false },     // Балансир
-        8: { active: false },    // Неприкасаемый
+        8: { active: true },    // Неприкасаемый
         9: { active: false },     // Победитель по жизни
         10: { active: false },    // Баг-киллер
         21: { active: false },    // Ретроспектива Фичи
@@ -289,7 +289,7 @@ const userAchievements = {
         5: { active: false },     // Глаз орла
         6: { active: false },    // Наставник
         7: { active: false },     // Балансир
-        8: { active: false },    // Неприкасаемый
+        8: { active: true },    // Неприкасаемый
         9: { active: false },     // Победитель по жизни
         10: { active: false },   // Баг-киллер
         21: { active: false },    // Ретроспектива Фичи
