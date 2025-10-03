@@ -299,7 +299,7 @@ const userAchievements = {
         25: { active: false },   // Агент Перемен
         26: { active: false },    // Гайдмастер
         27: { active: false },   // Автоматизатор Рутины
-        28: { active: false },    // Мировой дипломат
+        28: { active: true },    // Мировой дипломат
         29: { active: false }     // Проводник Ретроспективы
     },
     4: { // Никита Сахно
