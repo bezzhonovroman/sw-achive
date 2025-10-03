@@ -251,7 +251,7 @@ const userAchievements = {
         9: { active: false },     // Победитель по жизни
         10: { active: false },    // Баг-киллер
         21: { active: true },    // Ретроспектива Фичи
-        22: { active: false },   // Голос Команды
+        22: { active: true },   // Голос Команды
         23: { active: false },    // Инициатор Церемоний
         24: { active: false },    // Страж ДоР
         25: { active: false },   // Агент Перемен
