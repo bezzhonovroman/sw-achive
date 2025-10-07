@@ -271,7 +271,7 @@ const userAchievements = {
         8: { active: false },     // Неприкасаемый
         9: { active: false },    // Победитель по жизни
         10: { active: false },    // Баг-киллер
-        21: { active: false },   // Ретроспектива Фичи
+        21: { active: true },   // Ретроспектива Фичи
         22: { active: false },    // Голос Команды
         23: { active: false },    // Инициатор Церемоний
         24: { active: false },    // Страж ДоР
@@ -313,7 +313,7 @@ const userAchievements = {
         8: { active: false },    // Неприкасаемый
         9: { active: false },     // Победитель по жизни
         10: { active: false },    // Баг-киллер
-        21: { active: false },   // Ретроспектива Фичи
+        21: { active: true },   // Ретроспектива Фичи
         22: { active: false },   // Голос Команды
         23: { active: false },    // Инициатор Церемоний
         24: { active: false },    // Страж ДоР
