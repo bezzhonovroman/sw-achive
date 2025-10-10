@@ -363,7 +363,7 @@ const userAchievements = {
         36: { active: false },    // Монах рефакторинга
         37: { active: false },    // Страйк!
         38: { active: false },    // Часовой
-        39: { active: false }     // Баг-киллер
+        39: { active: true }     // Баг-киллер
     },
     7: { // Екатерина Антипова
         11: { active: false },    // 100% краш
@@ -371,7 +371,7 @@ const userAchievements = {
         13: { active: false },    // Документационный спринтер
         14: { active: false },    // Страйк
         15: { active: false },    // Шерлок
-        16: { active: false },   // Автономный тестер
+        16: { active: true },   // Автономный тестер
         17: { active: false },    // Международный тестировщик
         18: { active: false },    // Опрятный кандидат
         19: { active: false },   // Помощник большого брата
@@ -392,7 +392,7 @@ const userAchievements = {
         13: { active: false },   // Документационный спринтер
         14: { active: false },    // Страйк
         15: { active: false },    // Шерлок
-        16: { active: false },    // Автономный тестер
+        16: { active: true },    // Автономный тестер
         17: { active: false },   // Международный тестировщик
         18: { active: false },   // Опрятный кандидат
         19: { active: false },    // Помощник большого брата
@@ -401,7 +401,7 @@ const userAchievements = {
         22: { active: true },   // Голос Команды
         23: { active: false },   // Инициатор Церемоний
         24: { active: false },    // Страж ДоР
-        25: { active: false },   // Агент Перемен
+        25: { active: true },   // Агент Перемен
         26: { active: false },    // Гайдмастер
         27: { active: false },    // Автоматизатор Рутины
         28: { active: true },   // Мировой дипломат
