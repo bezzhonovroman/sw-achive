@@ -352,7 +352,7 @@ const userAchievements = {
         25: { active: false },   // Агент Перемен
         26: { active: false },    // Гайдмастер
         27: { active: false },   // Автоматизатор Рутины
-        28: { active: false },    // Мировой дипломат
+        28: { active: true },    // Мировой дипломат
         29: { active: false },    // Проводник Ретроспективы
         30: { active: false },    // Без паники
         31: { active: true },    // Победитель по жизни
