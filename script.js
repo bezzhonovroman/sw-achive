@@ -403,7 +403,7 @@ const userAchievements = {
         24: { active: false },    // Страж ДоР
         25: { active: true },   // Агент Перемен
         26: { active: false },    // Гайдмастер
-        27: { active: false },    // Автоматизатор Рутины
+        27: { active: true },    // Автоматизатор Рутины
         28: { active: true },   // Мировой дипломат
         29: { active: false }    // Проводник Ретроспективы
     }
