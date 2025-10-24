@@ -358,7 +358,7 @@ const userAchievements = {
         31: { active: true },    // Победитель по жизни
         32: { active: false },    // На грани фантастики
         33: { active: true },    // Консильери
-        34: { active: false },    // Герой хотфиксов
+        34: { active: true },    // Герой хотфиксов
         35: { active: false },    // Повелитель Swagger'а
         36: { active: false },    // Монах рефакторинга
         37: { active: false },    // Страйк!
