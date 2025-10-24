@@ -333,16 +333,16 @@ const userAchievements = {
         27: { active: false },   // Автоматизатор Рутины
         28: { active: false },    // Мировой дипломат
         29: { active: false },    // Проводник Ретроспективы
-        30: { active: false },    // Без паники
+        30: { active: true },    // Без паники
         31: { active: false },    // Победитель по жизни
         32: { active: false },    // На грани фантастики
         33: { active: false },    // Консильери
-        34: { active: false },    // Герой хотфиксов
+        34: { active: true },    // Герой хотфиксов
         35: { active: false },    // Повелитель Swagger'а
         36: { active: false },    // Монах рефакторинга
         37: { active: false },    // Страйк!
         38: { active: false },    // Часовой
-        39: { active: false }     // Баг-киллер
+        39: { active: true }     // Баг-киллер
     },
     6: { // Никита Михайлюк
         21: { active: false },   // Ретроспектива Фичи
@@ -354,7 +354,7 @@ const userAchievements = {
         27: { active: false },   // Автоматизатор Рутины
         28: { active: true },    // Мировой дипломат
         29: { active: false },    // Проводник Ретроспективы
-        30: { active: false },    // Без паники
+        30: { active: true },    // Без паники
         31: { active: true },    // Победитель по жизни
         32: { active: false },    // На грани фантастики
         33: { active: true },    // Консильери
