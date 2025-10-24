@@ -388,7 +388,7 @@ const userAchievements = {
     },
     8: { // Роман Безжонов
         11: { active: false },   // 100% краш
-        12: { active: false },    // Двойной агент
+        12: { active: true },    // Двойной агент
         13: { active: false },   // Документационный спринтер
         14: { active: false },    // Страйк
         15: { active: false },    // Шерлок
