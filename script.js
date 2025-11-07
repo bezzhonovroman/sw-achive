@@ -421,6 +421,76 @@ const membersInfo = {
     8: { name: 'Роман Безжонов', role: 'QA Engineer', avatar: 'source/bezzhonov.jpg' }
 };
 
+// Определение типов медалей
+const badgeTypes = {
+    'gold': {
+        name: 'Золотая медаль',
+        color: '#FFD700',
+        icon: '🥇'
+    },
+    'silver': {
+        name: 'Серебряная медаль',
+        color: '#C0C0C0',
+        icon: '🥈'
+    },
+    'bronze': {
+        name: 'Бронзовая медаль',
+        color: '#CD7F32',
+        icon: '🥉'
+    },
+    'wood': {
+        name: 'Деревянная медаль',
+        color: '#8B4513',
+        icon: '🪵'
+    },
+    'active': {
+        name: 'Самый активный',
+        color: '#FF6B35',
+        icon: '🚀'
+    },
+    'contribution': {
+        name: 'Наибольший вклад',
+        color: '#9333EA',
+        icon: '💪'
+    },
+    'pioneer': {
+        name: 'Первооткрыватель',
+        color: '#FFD700',
+        icon: '🏆'
+    }
+};
+
+// Кастомные медали для каждого участника
+const memberBadges = {
+    1: [ // Марина Селезнева
+        { type: 'gold', description: 'Золотая медаль' }
+    ],
+    2: [ // Павел Кривцов
+        { type: 'bronze', description: 'Бронзовая медаль' }
+    ],
+    3: [ // Тимур Медов
+        { type: 'bronze', description: 'Бронзовая медаль' }
+    ],
+    4: [ // Никита Сахно
+        { type: 'silver', description: 'Серебряная медаль' }
+    ],
+    5: [ // Никита Юрлов
+        { type: 'wood', description: 'Деревянная медаль' }
+    ],
+    6: [ // Никита Михайлюк
+        { type: 'silver', description: 'Серебряная медаль' },
+        { type: 'active', description: 'Самый активный' },
+        { type: 'contribution', description: 'Наибольший вклад' },
+        { type: 'pioneer', description: 'Первооткрыватель' }
+    ],
+    7: [ // Екатерина Антипова
+        { type: 'wood', description: 'Деревянная медаль' }
+    ],
+    8: [ // Роман Безжонов
+        { type: 'bronze', description: 'Бронзовая медаль' }
+    ]
+};
+
 // Функция для получения URL изображения достижения по редкости
 function getAchievementImageUrl(achievementId) {
     const achievement = achievementsData[achievementId];
@@ -684,6 +754,39 @@ function getStatusByProgress(progress) {
     }
 }
 
+// Функция для рендеринга кастомных медалек
+function renderBadges(memberId) {
+    const badgesContainer = document.querySelector(`.badges-container[data-member-id="${memberId}"]`);
+    if (!badgesContainer) return;
+    
+    const badges = memberBadges[memberId] || [];
+    badgesContainer.innerHTML = '';
+    
+    badges.forEach((badgeData, index) => {
+        const badgeType = badgeTypes[badgeData.type];
+        if (!badgeType) return;
+        
+        const badge = document.createElement('div');
+        badge.className = `badge-item badge-${badgeData.type}`;
+        badge.setAttribute('data-badge-type', badgeData.type);
+        
+        badge.innerHTML = `
+            <div class="badge-emoji">${badgeType.icon}</div>
+            <div class="badge-tooltip">${badgeData.description}</div>
+        `;
+        
+        // Устанавливаем цвет рамки
+        badge.style.borderColor = badgeType.color;
+        
+        badgesContainer.appendChild(badge);
+    });
+    
+    // Показываем контейнер с задержкой для анимации
+    setTimeout(() => {
+        badgesContainer.classList.add('visible');
+    }, 400 + (memberId * 100));
+}
+
 // Функция для обновления прогресс-баров и статусов на главной странице
 function updateProgressBars() {
     for (let memberId = 1; memberId <= 8; memberId++) {
@@ -721,6 +824,9 @@ function updateProgressBars() {
                         }, 300 + (memberId * 50)); // Последовательное появление
                     }
                 }
+                
+                // Рендерим медальки для этого участника
+                renderBadges(memberId);
             }, memberId * 100); // Последовательная анимация
         }
     }
