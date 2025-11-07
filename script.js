@@ -33,7 +33,7 @@ const achievementsData = {
     },
     6: {
         title: "Наставник",
-        description: "RP меньше, чем завел дискуссий.",
+        description: "PR меньше, чем завел дискуссий.",
         category: "technical",
         rarity: "rare"
     },
@@ -240,13 +240,13 @@ const achievementsData = {
 // Индивидуальные достижения пользователей с их статусами
 const userAchievements = {
     1: { // Марина Селезнева
-        1: { active: false },     // Кодовой дождь
-        2: { active: false },     // Чистильщик
-        3: { active: false },    // Фабрика PR
-        4: { active: false },     // Феникс
-        5: { active: false },     // Глаз орла
-        6: { active: false },    // Наставник
-        7: { active: false },     // Балансир
+        1: { active: true },     // Кодовой дождь
+        2: { active: true },     // Чистильщик
+        3: { active: true },    // Фабрика PR
+        4: { active: true },     // Феникс
+        5: { active: true },     // Глаз орла
+        6: { active: true },    // Наставник
+        7: { active: true },     // Балансир
         8: { active: true },    // Неприкасаемый
         9: { active: false },     // Победитель по жизни
         10: { active: false },    // Баг-киллер
@@ -261,13 +261,13 @@ const userAchievements = {
         29: { active: false }     // Проводник Ретроспективы
     },
     2: { // Павел Кривцов
-        1: { active: false },     // Кодовой дождь
+        1: { active: true },     // Кодовой дождь
         2: { active: false },    // Чистильщик
-        3: { active: false },     // Фабрика PR
-        4: { active: false },     // Феникс
-        5: { active: false },     // Глаз орла
+        3: { active: true },     // Фабрика PR
+        4: { active: true },     // Феникс
+        5: { active: true },     // Глаз орла
         6: { active: false },     // Наставник
-        7: { active: false },     // Балансир
+        7: { active: true },     // Балансир
         8: { active: false },     // Неприкасаемый
         9: { active: false },    // Победитель по жизни
         10: { active: false },    // Баг-киллер
@@ -282,13 +282,13 @@ const userAchievements = {
         29: { active: false }    // Проводник Ретроспективы
     },
     3: { // Тимур Медов
-        1: { active: false },    // Кодовой дождь
+        1: { active: true },    // Кодовой дождь
         2: { active: false },     // Чистильщик
         3: { active: false },    // Фабрика PR
         4: { active: false },     // Феникс
         5: { active: false },     // Глаз орла
-        6: { active: false },    // Наставник
-        7: { active: false },     // Балансир
+        6: { active: true },    // Наставник
+        7: { active: true },     // Балансир
         8: { active: true },    // Неприкасаемый
         9: { active: false },     // Победитель по жизни
         10: { active: false },   // Баг-киллер
@@ -303,13 +303,13 @@ const userAchievements = {
         29: { active: false }     // Проводник Ретроспективы
     },
     4: { // Никита Сахно
-        1: { active: false },     // Кодовой дождь
-        2: { active: false },    // Чистильщик
-        3: { active: false },    // Фабрика PR
-        4: { active: false },     // Феникс
-        5: { active: false },    // Глаз орла
-        6: { active: false },     // Наставник
-        7: { active: false },     // Балансир
+        1: { active: true },     // Кодовой дождь
+        2: { active: true },    // Чистильщик
+        3: { active: true },    // Фабрика PR
+        4: { active: true },     // Феникс
+        5: { active: true },    // Глаз орла
+        6: { active: true },     // Наставник
+        7: { active: true },     // Балансир
         8: { active: false },    // Неприкасаемый
         9: { active: false },     // Победитель по жизни
         10: { active: false },    // Баг-киллер
@@ -339,8 +339,8 @@ const userAchievements = {
         33: { active: false },    // Консильери
         34: { active: true },    // Герой хотфиксов
         35: { active: false },    // Повелитель Swagger'а
-        36: { active: false },    // Монах рефакторинга
-        37: { active: false },    // Страйк!
+        36: { active: true },    // Монах рефакторинга
+        37: { active: true },    // Страйк!
         38: { active: false },    // Часовой
         39: { active: true }     // Баг-киллер
     },
@@ -360,8 +360,8 @@ const userAchievements = {
         33: { active: true },    // Консильери
         34: { active: true },    // Герой хотфиксов
         35: { active: false },    // Повелитель Swagger'а
-        36: { active: false },    // Монах рефакторинга
-        37: { active: false },    // Страйк!
+        36: { active: true },    // Монах рефакторинга
+        37: { active: true },    // Страйк!
         38: { active: false },    // Часовой
         39: { active: true }     // Баг-киллер
     },
